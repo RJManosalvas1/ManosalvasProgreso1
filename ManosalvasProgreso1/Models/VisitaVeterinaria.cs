@@ -9,39 +9,46 @@ namespace ManosalvasProgreso1.Models
         [Key]
         public int IdVisitaVeterinaria { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "La fecha de visita es obligatoria.")]
         [DataType(DataType.Date)]
+        [Display(Name = "Fecha de la visita")]
         public DateTime FechaVisita { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Debe seleccionar un motivo de visita.")]
+        [Display(Name = "Motivo de la visita")]
         public MotivoVisita MotivoVisita { get; set; }
 
+        [Display(Name = "¿Requiere medicación?")]
         public bool RequiereMedicamento { get; set; }
 
+        [Required]
+        [Display(Name = "Mascota")]
         public int IdMascota { get; set; }
 
         [ForeignKey("IdMascota")]
         public Mascota Mascota { get; set; }
 
-        public decimal Tarifa
+        [NotMapped]
+        [Display(Name = "Tarifa estimada")]
+        [DataType(DataType.Currency)]
+        public decimal Tarifa => MotivoVisita switch
         {
-            get
-            {
-                return MotivoVisita switch
-                {
-                    MotivoVisita.Vacunacion => 30m,
-                    MotivoVisita.RevisionGeneral => 20m,
-                    MotivoVisita.Cirugia => 100m,
-                    _ => 0m
-                };
-            }
-        }
+            MotivoVisita.Vacunacion => 30m,
+            MotivoVisita.RevisionGeneral => 20m,
+            MotivoVisita.Cirugia => 100m,
+            _ => 0m
+        };
     }
 
     public enum MotivoVisita
     {
+        [Display(Name = "Vacunación")]
         Vacunacion,
+
+        [Display(Name = "Revisión General")]
         RevisionGeneral,
+
+        [Display(Name = "Cirugía")]
         Cirugia
     }
 }

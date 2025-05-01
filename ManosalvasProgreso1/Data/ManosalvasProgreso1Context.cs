@@ -17,5 +17,8 @@ namespace ManosalvasProgreso1.Data
         public DbSet<ManosalvasProgreso1.Models.PropietarioMascota> PropietarioMascota { get; set; } = default!;
         public DbSet<ManosalvasProgreso1.Models.Mascota> Mascota { get; set; } = default!;
         public DbSet<ManosalvasProgreso1.Models.VisitaVeterinaria> VisitaVeterinaria { get; set; } = default!;
+        public DbSet<VisitaVeterinaria> VisitasVeterinarias { get; set; }
+        public DbSet<Mascota> Mascotas { get; set; }
+
     }
 }

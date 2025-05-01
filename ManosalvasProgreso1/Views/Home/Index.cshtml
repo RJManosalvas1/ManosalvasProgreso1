@@ -1,7 +1,28 @@
 ﻿@{
     ViewData["Title"] = "Inicio";
-    Layout = "~/Views/Shared/_Layout.cshtml"; // Esto es opcional si ya lo tienes en _ViewStart.cshtml
 }
 
-<h1>Bienvenido a ManosalvasProgreso1</h1>
-<p>Este es el contenido de la página de inicio. Aquí puedes mostrar información o estadísticas.</p>
+<div class="d-flex flex-column justify-content-center align-items-center" style="min-height: 90vh;">
+    <img src="https://img.freepik.com/vector-gratis/meme-cuadrado-gato-vibrante-simple_742173-4493.jpg"
+         alt="Gato Meme"
+         style="width: 700px; height: 700px; object-fit: cover;" class="mb-4" />
+
+    <input type="text" id="campoTexto" class="form-control form-control-lg w-50 mb-3" placeholder="Escribe algo aquí..." />
+
+    <button class="btn btn-outline-success btn-lg" onclick="mostrarMensaje()">
+        Mostrar Información
+    </button>
+</div>
+
+@section Scripts {
+    <script>
+        function mostrarMensaje() {
+            const valorCampo = document.getElementById("campoTexto").value;
+            const nombre = "Roberto Manosalvas";      
+            const curso = "ProgramacionIV";         
+            const hobbie = "Futbol y Programar"; 
+
+            alert(`Mi nombre es ${nombre}, mi curso es ${curso}, mi hobbie es ${hobbie} y el valor del campo de texto es: ${valorCampo}`);
+        }
+    </script>
+}
