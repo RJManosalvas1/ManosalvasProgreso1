@@ -1,0 +1,50 @@
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace ManosalvasProgreso1.Migrations
+{
+    /// <inheritdoc />
+    public partial class AddMigration : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.AlterColumn<int>(
+                name: "MotivoVisita",
+                table: "VisitaVeterinaria",
+                type: "int",
+                nullable: false,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)");
+
+            migrationBuilder.AlterColumn<decimal>(
+                name: "Telefono",
+                table: "PropietarioMascota",
+                type: "decimal(10,9)",
+                nullable: false,
+                oldClrType: typeof(decimal),
+                oldType: "decimal(18,2)");
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.AlterColumn<string>(
+                name: "MotivoVisita",
+                table: "VisitaVeterinaria",
+                type: "nvarchar(max)",
+                nullable: false,
+                oldClrType: typeof(int),
+                oldType: "int");
+
+            migrationBuilder.AlterColumn<decimal>(
+                name: "Telefono",
+                table: "PropietarioMascota",
+                type: "decimal(18,2)",
+                nullable: false,
+                oldClrType: typeof(decimal),
+                oldType: "decimal(10,9)");
+        }
+    }
+}
